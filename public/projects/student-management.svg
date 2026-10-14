@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0c1a26"/><stop offset="1" stop-color="#0f1430"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.15" cy="0.9" r="0.6">
+      <stop stop-color="#3ccf91" stop-opacity=".22"/><stop offset="1" stop-color="#3ccf91" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#5b8cff"/><stop offset="1" stop-color="#9b6bff"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect width="800" height="500" fill="url(#glow)"/>
+  <g transform="translate(60 52)" font-family="ui-sans-serif, system-ui, sans-serif">
+    <rect width="680" height="420" rx="14" fill="#0b1220" stroke="#25344f"/>
+    <path d="M0 14a14 14 0 0 1 14-14h652a14 14 0 0 1 14 14v22H0z" fill="#131c2e"/>
+    <circle cx="20" cy="18" r="5" fill="#ff6b7a" opacity=".7"/><circle cx="36" cy="18" r="5" fill="#f5b544" opacity=".7"/><circle cx="52" cy="18" r="5" fill="#3ccf91" opacity=".7"/>
+    <text x="340" y="22" text-anchor="middle" font-size="10" fill="#8089a0">Student Records</text>
+    <!-- toolbar -->
+    <rect x="24" y="56" width="300" height="34" rx="9" fill="#101a2c" stroke="#25344f"/>
+    <circle cx="44" cy="73" r="7" stroke="#8089a0" stroke-width="2"/><path d="M49 78l5 5" stroke="#8089a0" stroke-width="2" stroke-linecap="round"/>
+    <rect x="62" y="69" width="120" height="8" rx="4" fill="#3c4a66"/>
+    <rect x="530" y="56" width="126" height="34" rx="17" fill="url(#acc)"/>
+    <text x="593" y="77" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">+ Add Student</text>
+    <!-- stats -->
+    <g font-size="10">
+      <rect x="24" y="106" width="200" height="62" rx="10" fill="#111b2e" stroke="#25344f"/>
+      <text x="40" y="128" fill="#8089a0">Students</text><text x="40" y="154" font-size="20" font-weight="700" fill="#e8ebf4">248</text>
+      <rect x="240" y="106" width="200" height="62" rx="10" fill="#111b2e" stroke="#25344f"/>
+      <text x="256" y="128" fill="#8089a0">Courses</text><text x="256" y="154" font-size="20" font-weight="700" fill="#e8ebf4">12</text>
+      <rect x="456" y="106" width="200" height="62" rx="10" fill="#111b2e" stroke="#25344f"/>
+      <text x="472" y="128" fill="#8089a0">Avg. attendance</text><text x="472" y="154" font-size="20" font-weight="700" fill="#e8ebf4">91%</text>
+    </g>
+    <!-- table -->
+    <rect x="24" y="184" width="632" height="214" rx="10" fill="#0e1727" stroke="#25344f"/>
+    <g font-size="10" fill="#8089a0">
+      <text x="44" y="208">ROLL NO</text><text x="150" y="208">NAME</text><text x="330" y="208">COURSE</text><text x="470" y="208">SEMESTER</text><text x="580" y="208">STATUS</text>
+    </g>
+    <path d="M24 220h632" stroke="#25344f"/>
+    <g font-size="11" fill="#c9d1e3">
+      <g transform="translate(0 0)">
+        <text x="44" y="246" font-family="ui-monospace, Menlo, monospace" fill="#7aa2ff">CS23001</text>
+        <rect x="150" y="238" width="110" height="9" rx="4.5" fill="#3c4a66"/><text x="330" y="246">B.Tech CSE</text><text x="470" y="246">5</text>
+        <rect x="580" y="234" width="54" height="18" rx="9" fill="#3ccf91" opacity=".18"/><text x="607" y="247" text-anchor="middle" font-size="9" fill="#9be6c3">Active</text>
+      </g>
+      <path d="M44 262h592" stroke="#1b2740"/>
+      <g transform="translate(0 40)">
+        <text x="44" y="246" font-family="ui-monospace, Menlo, monospace" fill="#7aa2ff">CS23002</text>
+        <rect x="150" y="238" width="90" height="9" rx="4.5" fill="#3c4a66"/><text x="330" y="246">B.Tech CSE</text><text x="470" y="246">5</text>
+        <rect x="580" y="234" width="54" height="18" rx="9" fill="#3ccf91" opacity=".18"/><text x="607" y="247" text-anchor="middle" font-size="9" fill="#9be6c3">Active</text>
+      </g>
+      <path d="M44 302h592" stroke="#1b2740"/>
+      <g transform="translate(0 80)">
+        <text x="44" y="246" font-family="ui-monospace, Menlo, monospace" fill="#7aa2ff">CS23003</text>
+        <rect x="150" y="238" width="124" height="9" rx="4.5" fill="#3c4a66"/><text x="330" y="246">B.Tech IT</text><text x="470" y="246">3</text>
+        <rect x="580" y="234" width="54" height="18" rx="9" fill="#f5b544" opacity=".16"/><text x="607" y="247" text-anchor="middle" font-size="9" fill="#ffd08a">Pending</text>
+      </g>
+      <path d="M44 342h592" stroke="#1b2740"/>
+      <g transform="translate(0 120)">
+        <text x="44" y="246" font-family="ui-monospace, Menlo, monospace" fill="#7aa2ff">CS23004</text>
+        <rect x="150" y="238" width="100" height="9" rx="4.5" fill="#3c4a66"/><text x="330" y="246">B.Tech CSE</text><text x="470" y="246">5</text>
+        <rect x="580" y="234" width="54" height="18" rx="9" fill="#3ccf91" opacity=".18"/><text x="607" y="247" text-anchor="middle" font-size="9" fill="#9be6c3">Active</text>
+      </g>
+    </g>
+  </g>
+</svg>

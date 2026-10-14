@@ -1,0 +1,393 @@
+.gh-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.gh-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+  min-width: 0;
+}
+
+.gh-layout > *,
+.gh-main > * {
+  min-width: 0;
+}
+
+.gh-fallback {
+  padding: 18px 20px;
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+.gh-fallback a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- Profile card ---------- */
+.gh-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+}
+
+.gh-profile__head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.gh-profile__avatar {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--border-strong);
+  object-fit: cover;
+}
+
+.gh-profile__avatar--fallback {
+  display: grid;
+  place-items: center;
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+}
+
+.gh-profile__handle {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.gh-profile__sub {
+  font-size: 0.875rem;
+  color: var(--text-dim);
+}
+
+.gh-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.gh-stats__item {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 4px;
+  padding: 12px;
+}
+
+.gh-stats__item + .gh-stats__item {
+  border-left: 1px solid var(--border);
+}
+
+.gh-stats dt {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  font-size: 0.6875rem;
+  line-height: 1.3;
+  color: var(--text-dim);
+}
+
+.gh-stats dt svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.gh-stats dd {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.gh-langs {
+  display: grid;
+  gap: 12px;
+}
+
+.gh-langs__bar {
+  display: flex;
+  gap: 2px;
+  height: 8px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.gh-langs__bar span {
+  flex-basis: 0;
+}
+
+.gh-langs__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.gh-langs__list li,
+.gh-repo__meta > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gh-langs__list i,
+.gh-repo__meta i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.gh-langs__list li span {
+  color: var(--text-dim);
+}
+
+.gh-profile__cta {
+  width: 100%;
+}
+
+/* ---------- Contributions ---------- */
+.gh-contrib {
+  padding: 22px 24px;
+}
+
+.gh-contrib__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px 16px;
+  margin-bottom: 18px;
+}
+
+.gh-contrib__total {
+  font-size: 0.875rem;
+  color: var(--text-dim);
+}
+
+.gh-contrib__total strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.contrib__scroll {
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+.contrib__graph {
+  --cell: 11px;
+  --gap: 3px;
+  width: max-content;
+}
+
+.contrib__months,
+.contrib__cells {
+  display: grid;
+  grid-template-columns: repeat(var(--weeks), var(--cell));
+  column-gap: var(--gap);
+}
+
+.contrib__months {
+  margin-bottom: 6px;
+  font-size: 0.6875rem;
+  color: var(--text-dim);
+}
+
+.contrib__months span {
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.contrib__cells {
+  grid-template-rows: repeat(7, var(--cell));
+  grid-auto-flow: column;
+  row-gap: var(--gap);
+}
+
+.contrib__cell {
+  width: var(--cell, 11px);
+  height: var(--cell, 11px);
+  border-radius: 3px;
+  background: var(--fill-soft);
+}
+
+.contrib__cell--empty {
+  background: transparent;
+}
+
+.contrib__cell[data-level="1"] {
+  background: var(--contrib-1);
+}
+.contrib__cell[data-level="2"] {
+  background: var(--contrib-2);
+}
+.contrib__cell[data-level="3"] {
+  background: var(--contrib-3);
+}
+.contrib__cell[data-level="4"] {
+  background: var(--contrib-4);
+}
+
+.contrib__legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 12px;
+  font-size: 0.6875rem;
+  color: var(--text-dim);
+}
+
+.contrib__legend span:first-child {
+  margin-right: 4px;
+}
+
+.contrib__legend span:last-child {
+  margin-left: 4px;
+}
+
+/* ---------- Repositories ---------- */
+.gh-repos__heading {
+  margin-bottom: 14px;
+}
+
+.gh-repos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.gh-repos > li {
+  display: flex;
+}
+
+.gh-repo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding: 16px 18px;
+}
+
+.gh-repo__name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.gh-repo__name svg:first-child {
+  color: var(--text-dim);
+}
+
+.gh-repo__arrow {
+  margin-left: auto;
+  color: var(--text-dim);
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  transition:
+    opacity 0.2s var(--ease),
+    transform 0.2s var(--ease);
+}
+
+.gh-repo:hover .gh-repo__arrow,
+.gh-repo:focus-visible .gh-repo__arrow {
+  opacity: 1;
+  transform: none;
+}
+
+.gh-repo__desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.gh-repo__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin-top: auto;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* ---------- Skeletons ---------- */
+.skeleton {
+  display: block;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--fill-soft), var(--fill-mid), var(--fill-soft));
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+.skeleton--num {
+  width: 36px;
+  height: 24px;
+}
+
+.skeleton--graph {
+  height: 118px;
+}
+
+.skeleton--title {
+  width: 50%;
+  height: 16px;
+}
+
+.skeleton--line {
+  width: 85%;
+  height: 12px;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 1023px) {
+  .gh-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .gh-profile {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .gh-langs,
+  .gh-profile__cta {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .gh-profile {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 20px;
+  }
+
+  .gh-contrib {
+    padding: 18px;
+  }
+
+  .gh-repos {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

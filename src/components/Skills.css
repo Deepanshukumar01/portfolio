@@ -1,0 +1,132 @@
+.skills {
+  overflow: hidden;
+}
+
+.skills__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 24px;
+  padding: 14px clamp(18px, 3vw, 28px);
+  border-bottom: 1px solid var(--border);
+  background: var(--sunken);
+}
+
+.skills__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.skills__legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skills__row {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  align-items: center;
+  gap: 16px 40px;
+  padding: 20px clamp(18px, 3vw, 28px);
+  transition: background-color 0.25s var(--ease);
+}
+
+.skills__row + .skills__row {
+  border-top: 1px solid var(--border);
+}
+
+.skills__row:hover {
+  background: var(--tint-1);
+}
+
+.skills__category {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.skills__category-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
+  color: var(--accent-text);
+}
+
+.skills__category-title {
+  font-size: 1rem;
+}
+
+.skills__category-desc {
+  margin-top: 2px;
+  font-size: 0.84375rem;
+  color: var(--text-dim);
+}
+
+.skills__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 12px 7px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--skill-bg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition:
+    border-color 0.2s var(--ease),
+    background-color 0.2s var(--ease);
+}
+
+.skill:hover {
+  border-color: var(--border-strong);
+  background: var(--skill-bg-hover);
+}
+
+.skill__logo {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: color 0.2s var(--ease);
+}
+
+.skill:hover .skill__logo {
+  color: var(--text);
+}
+
+/* Three-step meter; the legend (and hidden text) carries the meaning. */
+.level-meter {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.level-meter i {
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+  background: var(--fill);
+}
+
+.level-meter i.is-filled {
+  background: var(--gradient);
+}
+
+@media (max-width: 860px) {
+  .skills__row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

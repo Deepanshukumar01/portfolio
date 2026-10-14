@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#151030"/><stop offset="1" stop-color="#0d1328"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.3" cy="0.45" r="0.5">
+      <stop stop-color="#9b6bff" stop-opacity=".35"/><stop offset="1" stop-color="#9b6bff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="warn" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#ff6b7a"/><stop offset="1" stop-color="#f5b544"/>
+    </linearGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#5b8cff"/><stop offset="1" stop-color="#9b6bff"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect width="800" height="500" fill="url(#glow)"/>
+  <!-- concentric radar -->
+  <g stroke="#9b6bff" stroke-opacity=".18">
+    <circle cx="250" cy="250" r="120"/><circle cx="250" cy="250" r="180"/><circle cx="250" cy="250" r="240"/>
+  </g>
+  <!-- phone -->
+  <g transform="translate(160 40)">
+    <rect width="180" height="380" rx="30" fill="#0b0f1d" stroke="#2c3658" stroke-width="2"/>
+    <rect x="66" y="12" width="48" height="10" rx="5" fill="#1b2340"/>
+    <text x="90" y="74" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#8089a0">Incoming call</text>
+    <circle cx="90" cy="122" r="32" fill="#1b2340"/>
+    <path d="M78 114a12 12 0 1 1 24 0a12 12 0 0 1-24 0zM70 142a20 14 0 0 1 40 0z" fill="#55617f"/>
+    <text x="90" y="182" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#e8ebf4">+91 9XXXX XXX42</text>
+    <rect x="22" y="200" width="136" height="46" rx="12" fill="url(#warn)" opacity=".16" stroke="#ff6b7a" stroke-opacity=".5"/>
+    <path d="M42 230l9-16 9 16z" fill="#ff8a95"/>
+    <text x="68" y="221" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="700" fill="#ffb0b8">Likely spam</text>
+    <text x="68" y="236" font-family="ui-sans-serif, system-ui, sans-serif" font-size="9" fill="#ffb0b8" opacity=".8">Reported 128 times</text>
+    <circle cx="48" cy="316" r="22" fill="#ff6b7a"/><rect x="38" y="313" width="20" height="6" rx="3" fill="#fff"/>
+    <circle cx="132" cy="316" r="22" fill="#3ccf91" opacity=".35"/><rect x="122" y="313" width="20" height="6" rx="3" fill="#fff" opacity=".6"/>
+  </g>
+  <!-- analysis panel -->
+  <g transform="translate(400 96)">
+    <rect width="320" height="290" rx="14" fill="#10162a" stroke="#28335a"/>
+    <text x="22" y="36" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="#8089a0">risk_analysis.json</text>
+    <text x="22" y="82" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#a4adc3">Spam risk score</text>
+    <text x="22" y="118" font-family="ui-sans-serif, system-ui, sans-serif" font-size="34" font-weight="700" fill="#e8ebf4">87<tspan font-size="16" fill="#8089a0">/100</tspan></text>
+    <rect x="22" y="134" width="276" height="8" rx="4" fill="#1c2440"/>
+    <rect x="22" y="134" width="240" height="8" rx="4" fill="url(#warn)"/>
+    <g font-family="ui-sans-serif, system-ui, sans-serif" font-size="11">
+      <rect x="22" y="164" width="276" height="30" rx="8" fill="#0b1020"/>
+      <circle cx="38" cy="179" r="4" fill="#ff6b7a"/><text x="50" y="183" fill="#c9d1e3">High report frequency</text>
+      <rect x="22" y="200" width="276" height="30" rx="8" fill="#0b1020"/>
+      <circle cx="38" cy="215" r="4" fill="#f5b544"/><text x="50" y="219" fill="#c9d1e3">Unusual call pattern</text>
+      <rect x="22" y="236" width="276" height="30" rx="8" fill="#0b1020"/>
+      <circle cx="38" cy="251" r="4" fill="#3ccf91"/><text x="50" y="255" fill="#c9d1e3">Valid number format</text>
+    </g>
+  </g>
+</svg>

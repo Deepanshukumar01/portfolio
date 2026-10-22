@@ -8,6 +8,7 @@ import GitHub from "./components/GitHub.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import Toaster from "./components/Toaster.jsx";
+import SectionRail from "./components/SectionRail.jsx";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
       </a>
       <div className="backdrop" aria-hidden="true" />
       <Navbar />
+      <SectionRail />
       <main id="main">
         <Hero />
         <About />

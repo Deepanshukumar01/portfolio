@@ -1,7 +1,9 @@
-import { Briefcase, Presentation, CalendarDays, BadgeCheck, Users, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { Briefcase, Presentation, CalendarDays, BadgeCheck, Users, ExternalLink, Maximize2 } from "lucide-react";
 import { experiences, experienceTypes } from "../data/experience.js";
 import SectionHeading from "./SectionHeading.jsx";
 import Reveal from "./Reveal.jsx";
+import CertificateModal from "./CertificateModal.jsx";
 import "./Experience.css";
 
 const typeIcons = {
@@ -19,11 +21,11 @@ const groups = [
   .map((group) => ({ ...group, items: experiences.filter((item) => group.types.includes(item.type)) }))
   .filter((group) => group.items.length > 0);
 
-function ExperienceRow({ item }) {
+function ExperienceRow({ item, onViewCertificate }) {
   const Icon = typeIcons[item.type];
 
   return (
-    <li className="exp-row">
+    <li className={`exp-row ${item.certificate ? "exp-row--has-cert" : ""}`}>
       <span className="exp-row__icon" aria-hidden="true">
         <Icon size={18} />
       </span>
@@ -39,13 +41,15 @@ function ExperienceRow({ item }) {
           {item.date && <span> · {item.date}</span>}
         </p>
         <p className="exp-row__desc">{item.description}</p>
-        <ul role="list" className="tag-list exp-row__skills" aria-label="Skills practised">
-          {item.skills.map((skill) => (
-            <li key={skill} className="tag">
-              {skill}
-            </li>
-          ))}
-        </ul>
+        {item.skills.length > 0 && (
+          <ul role="list" className="tag-list exp-row__skills" aria-label="Skills practised">
+            {item.skills.map((skill) => (
+              <li key={skill} className="tag">
+                {skill}
+              </li>
+            ))}
+          </ul>
+        )}
         {item.credentialUrl && (
           <a className="exp-row__credential" href={item.credentialUrl} target="_blank" rel="noopener noreferrer">
             View credential
@@ -54,11 +58,28 @@ function ExperienceRow({ item }) {
           </a>
         )}
       </div>
+
+      {item.certificate && (
+        <button
+          type="button"
+          className="exp-row__cert"
+          onClick={() => onViewCertificate(item)}
+          aria-label={`View certificate for ${item.title}`}
+        >
+          <img src={item.certificate} alt="" width="168" height="119" loading="lazy" decoding="async" />
+          <span className="exp-row__cert-hint" aria-hidden="true">
+            <Maximize2 size={14} />
+            View certificate
+          </span>
+        </button>
+      )}
     </li>
   );
 }
 
 export default function Experience() {
+  const [certificateItem, setCertificateItem] = useState(null);
+
   return (
     <section id="experience" className="section" aria-labelledby="experience-title">
       <div className="container">
@@ -79,13 +100,15 @@ export default function Experience() {
               </h3>
               <ul role="list" className="exp-group__list">
                 {group.items.map((item) => (
-                  <ExperienceRow key={item.title} item={item} />
+                  <ExperienceRow key={item.title} item={item} onViewCertificate={setCertificateItem} />
                 ))}
               </ul>
             </Reveal>
           ))}
         </div>
       </div>
+
+      <CertificateModal item={certificateItem} onClose={() => setCertificateItem(null)} />
     </section>
   );
 }

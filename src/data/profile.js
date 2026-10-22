@@ -25,9 +25,10 @@ export const profile = {
   // Place your resume at /public/resume.pdf — it is served from the site root.
   resumeUrl: "/resume.pdf",
 
-  // TODO: add a photo to /public (e.g. /public/profile.jpg) and set "/profile.jpg".
-  // While null, a monogram is shown instead.
-  photo: null,
+  // TODO: /profile.svg is a placeholder cartoon avatar — add your photo to /public
+  // (e.g. /public/profile.jpg) and set "/profile.jpg".
+  // While null, the hero shows the about.js code card instead.
+  photo: "/profile.svg",
 
   githubUsername: "Deepanshukumar01",
 

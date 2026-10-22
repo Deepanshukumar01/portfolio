@@ -6,10 +6,10 @@ import Reveal from "./Reveal.jsx";
 import "./About.css";
 
 const interests = [
-  { label: "Web development", icon: Globe },
-  { label: "Backend & APIs", icon: Server },
-  { label: "Databases", icon: Database },
-  { label: "Practical projects", icon: Hammer },
+  { label: "Web development", text: "Responsive, accessible interfaces", icon: Globe },
+  { label: "Backend & APIs", text: "REST APIs and server-side logic", icon: Server },
+  { label: "Databases", text: "Schema design and SQL queries", icon: Database },
+  { label: "Practical projects", text: "Ideas turned into usable apps", icon: Hammer },
 ];
 
 function EducationCard({ entry, id }) {
@@ -26,12 +26,6 @@ function EducationCard({ entry, id }) {
           </h3>
           <p className="edu__institution">{entry.institution}</p>
         </div>
-        {entry.score && (
-          <p className="edu__score">
-            <span className="edu__score-value">{entry.score.value}</span>
-            <span className="edu__score-label">{entry.score.label}</span>
-          </p>
-        )}
       </header>
 
       <ul role="list" className="edu__meta">
@@ -43,7 +37,15 @@ function EducationCard({ entry, id }) {
           <MapPin size={14} aria-hidden="true" />
           {entry.location}
         </li>
-        <li className="edu__status">{entry.status}</li>
+        <li className="edu__status">
+          {entry.status}
+          {entry.score && (
+            <>
+              {" · "}
+              {entry.score.label} <strong>{entry.score.value}</strong>
+            </>
+          )}
+        </li>
       </ul>
 
       {entry.coursework?.length > 0 && (
@@ -90,21 +92,28 @@ export default function About() {
 
         <div className="about">
           <Reveal className="about__story">
-            {profile.photo && (
-              <img
-                className="about__photo"
-                src={profile.photo}
-                alt={`Portrait of ${profile.name}`}
-                width="72"
-                height="72"
-                loading="lazy"
-              />
-            )}
+            <div className="about__header">
+              {profile.photo && (
+                <img
+                  className="about__photo"
+                  src={profile.photo}
+                  alt={`Portrait of ${profile.name}`}
+                  width="56"
+                  height="56"
+                  loading="lazy"
+                />
+              )}
+              <div>
+                <p className="about__name">{profile.name}</p>
+                <p className="about__meta">
+                  {profile.degree} · {profile.location}
+                </p>
+              </div>
+            </div>
             <div className="about__text">
               <p className="about__lede">
-                I&apos;m a <strong>{profile.currentYear} B.Tech Computer Science &amp; Engineering</strong> student with a
-                CGPA of <strong>{profile.cgpa}</strong>, most interested in software development — especially web and
-                backend development.
+                I&apos;m a <strong>{profile.currentYear} B.Tech Computer Science &amp; Engineering</strong> student, most
+                interested in software development — especially web and backend development.
               </p>
               <p>
                 I enjoy turning ideas into practical projects: designing a schema, writing an API, and building an
@@ -117,14 +126,22 @@ export default function About() {
               </p>
             </div>
 
-            <ul role="list" className="about__interests" aria-label="Areas of interest">
-              {interests.map(({ label, icon: Icon }) => (
-                <li key={label}>
-                  <Icon size={16} aria-hidden="true" />
-                  {label}
-                </li>
-              ))}
-            </ul>
+            <div className="about__focus">
+              <h3 className="kicker">What I focus on</h3>
+              <ul role="list" className="about__interests">
+                {interests.map(({ label, text, icon: Icon }) => (
+                  <li key={label}>
+                    <span className="about__interest-icon" aria-hidden="true">
+                      <Icon size={16} />
+                    </span>
+                    <span>
+                      <span className="about__interest-label">{label}</span>
+                      <span className="about__interest-text">{text}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </Reveal>
 
           <Reveal className="about__education" delay={100}>

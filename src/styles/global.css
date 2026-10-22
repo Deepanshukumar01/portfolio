@@ -215,6 +215,33 @@ body {
   overflow-x: clip;
 }
 
+/* Always-visible page scrollbar (macOS hides overlay scrollbars by default).
+   Chrome ignores ::-webkit-scrollbar once scrollbar-color is set, so the standard
+   property is only used where the pseudo-elements are unsupported (Firefox). */
+html::-webkit-scrollbar {
+  width: 12px;
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+html::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2)) padding-box;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  border-width: 2px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  html {
+    scrollbar-color: var(--accent) var(--bg);
+  }
+}
+
 h1,
 h2,
 h3,
@@ -348,9 +375,11 @@ button {
 }
 
 /* Sections read as chapters of one page: a hairline divider, not a new background. */
+/* Nav links land with the heading just below the navbar, skipping most of the top padding. */
 .section {
   position: relative;
   padding-block: var(--section-space);
+  scroll-margin-top: calc(32px - var(--section-space));
 }
 
 .section::before {

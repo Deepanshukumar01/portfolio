@@ -2,7 +2,8 @@
  * Learning experience — job simulations, workshops, events and activities.
  * These are NOT employment; `type` is shown as a label on every card.
  *
- * Optional fields: `date` (e.g. "Mar 2025"), `credentialUrl` (certificate link).
+ * Optional fields: `date` (e.g. "Mar 2025"), `credentialUrl` (certificate link),
+ * `certificate` (image in /public/certificates — shown as a thumbnail that opens full size).
  * TODO: add dates and certificate links, and refine descriptions.
  */
 export const experienceTypes = {
@@ -19,27 +20,33 @@ export const experiences = [
     organization: "JPMorgan Chase & Co.",
     platform: "Forage",
     type: "simulation",
+    date: "May 2026",
     description:
-      "Completed a virtual job simulation built around realistic software engineering tasks — setting up a development environment, working within an existing codebase and implementing features.",
-    skills: ["Software Engineering", "Codebase Navigation", "Problem Solving"],
+      "Completed practical software engineering tasks — project setup, Kafka integration, H2 database integration, REST API integration and building a REST API controller.",
+    skills: ["Kafka", "H2 Database", "REST APIs"],
+    certificate: "/certificates/jpmorgan-software-engineering.jpg",
   },
   {
-    title: "Data Visualisation Job Simulation",
+    title: "Data Visualisation: Empowering Business with Effective Insights",
     organization: "Tata Group",
     platform: "Forage",
     type: "simulation",
+    date: "May 2026",
     description:
-      "Framed business questions, chose suitable visuals and built dashboards that communicate insights clearly to leadership.",
+      "Framed the business scenario, chose the right visuals, created effective visuals and communicated insights and analysis to leadership.",
     skills: ["Data Visualisation", "Dashboards", "Business Insights"],
+    certificate: "/certificates/tata-data-visualisation.jpg",
   },
   {
-    title: "Cyber Job Simulation",
-    organization: "Deloitte",
-    platform: "Forage",
-    type: "simulation",
+    title: "TCS iON Career Edge – Young Professional",
+    organization: "Tata Consultancy Services",
+    platform: "TCS iON",
+    type: "certification",
+    date: "May 2026",
     description:
-      "Investigated a simulated security incident by reviewing web activity logs to identify suspicious behaviour.",
-    skills: ["Cybersecurity Basics", "Log Analysis"],
+      "Completed a course on workplace readiness — communication, presentation, resume writing, group discussions, interviews, business etiquette, IT foundations and an overview of AI.",
+    skills: ["Communication Skills", "Interview Skills", "IT Foundational Skills"],
+    certificate: "/certificates/tcs-ion-career-edge.jpg",
   },
   {
     title: "Google Developer Groups",
@@ -50,12 +57,13 @@ export const experiences = [
     skills: ["Community", "Developer Tools"],
   },
   {
-    title: "Kotlin Workshop",
-    organization: "Technical Workshop",
+    title: "Infosys Springboard Workshop",
+    organization: "Infosys",
+    platform: "Infosys Springboard",
     type: "workshop",
-    description:
-      "Hands-on introduction to Kotlin syntax, null safety and the basics of Android development.",
-    skills: ["Kotlin", "Android Basics"],
+    // TODO: name the workshop topic in the description and list the skills it covered.
+    description: "Technical workshop on Infosys Springboard, Infosys's digital learning platform.",
+    skills: [],
   },
   {
     title: "College Technical Events",

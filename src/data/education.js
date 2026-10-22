@@ -12,7 +12,8 @@ export const education = [
     location: "Uttar Pradesh, India",
     period: "2023 – 2027",
     status: "4th Year · Final year",
-    score: { label: "CGPA", value: profile.cgpa },
+    // Shown after `status` in the card's meta row.
+    score: { label: "Current CGPA", value: profile.cgpa },
     // TODO: adjust to match your curriculum.
     coursework: [
       "Data Structures & Algorithms",

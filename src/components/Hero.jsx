@@ -2,6 +2,7 @@ import { ArrowRight, MapPin } from "lucide-react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import { profile, socialLinks } from "../data/profile.js";
 import { projects } from "../data/projects.js";
+import { experiences } from "../data/experience.js";
 import ResumeButton from "./ResumeButton.jsx";
 import "./Hero.css";
 
@@ -17,11 +18,11 @@ const codeLines = [
 ];
 
 const facts = [
-  { label: "CGPA", value: profile.cgpa },
   { label: "Degree", value: profile.degree },
   { label: "Currently", value: profile.currentYear },
-  { label: "Projects built", value: projects.length },
   { label: "Graduating", value: profile.graduationYear },
+  { label: "Projects built", value: projects.length },
+  { label: "Job simulations", value: experiences.filter((e) => e.type === "simulation").length },
 ];
 
 export default function Hero() {
@@ -81,36 +82,42 @@ export default function Hero() {
             </div>
           </div>
 
-          <figure
-            className="hero__code card hero__reveal"
-            style={{ "--d": 3 }}
-            aria-label="Profile summary written as a JavaScript object"
-          >
-            <div className="hero__code-bar">
-              <span className="hero__code-dots" aria-hidden="true">
-                <i />
-                <i />
-                <i />
-              </span>
-              <span className="hero__code-file">about.js</span>
-            </div>
-            <pre className="hero__code-body">
-              <code>
-                {codeLines.map((tokens, lineIndex) => (
-                  <span className="hero__code-line" key={lineIndex}>
-                    <span className="hero__code-ln" aria-hidden="true">
-                      {lineIndex + 1}
-                    </span>
-                    {tokens.map((token, i) => (
-                      <span key={i} className={`tok-${token.t}`}>
-                        {token.v}
+          {profile.photo ? (
+            <figure className="hero__photo hero__reveal" style={{ "--d": 3 }}>
+              <img src={profile.photo} alt={`Portrait of ${profile.name}`} width="400" height="400" />
+            </figure>
+          ) : (
+            <figure
+              className="hero__code card hero__reveal"
+              style={{ "--d": 3 }}
+              aria-label="Profile summary written as a JavaScript object"
+            >
+              <div className="hero__code-bar">
+                <span className="hero__code-dots" aria-hidden="true">
+                  <i />
+                  <i />
+                  <i />
+                </span>
+                <span className="hero__code-file">about.js</span>
+              </div>
+              <pre className="hero__code-body">
+                <code>
+                  {codeLines.map((tokens, lineIndex) => (
+                    <span className="hero__code-line" key={lineIndex}>
+                      <span className="hero__code-ln" aria-hidden="true">
+                        {lineIndex + 1}
                       </span>
-                    ))}
-                  </span>
-                ))}
-              </code>
-            </pre>
-          </figure>
+                      {tokens.map((token, i) => (
+                        <span key={i} className={`tok-${token.t}`}>
+                          {token.v}
+                        </span>
+                      ))}
+                    </span>
+                  ))}
+                </code>
+              </pre>
+            </figure>
+          )}
         </div>
 
         <dl className="hero__facts hero__reveal" style={{ "--d": 5 }}>

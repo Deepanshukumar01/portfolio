@@ -1,23 +1,56 @@
+/* Equal columns, shared with the heading above, so the lead and the card line up. */
+#about .section-head,
+.about {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: clamp(32px, 6vw, 80px);
+}
+
 .about {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-  gap: clamp(32px, 6vw, 72px);
-  align-items: start;
+  row-gap: clamp(32px, 6vw, 72px);
 }
 
 /* ---------- Story ---------- */
-.about__photo {
-  width: 72px;
-  height: 72px;
+.about__story {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.about__photo {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   border: 2px solid var(--border-strong);
   object-fit: cover;
+  background: var(--surface-2);
+}
+
+.about__name {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.about__meta {
+  margin-top: 2px;
+  color: var(--text-dim);
+  font-size: 0.875rem;
 }
 
 .about__text {
   display: grid;
   gap: 16px;
+  margin-bottom: 32px;
   color: var(--text-muted);
   font-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
 }
@@ -34,42 +67,70 @@
   font-weight: 500;
 }
 
+/* Pinned to the bottom so the column ends level with the education card. */
+.about__focus {
+  display: grid;
+  gap: 12px;
+  margin-top: auto;
+}
+
 .about__interests {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: 32px;
-  border-top: 1px solid var(--border);
+  gap: 12px;
 }
 
 .about__interests li {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--tint-1);
+  transition: border-color 0.2s var(--ease);
+}
+
+.about__interests li:hover {
+  border-color: var(--accent-border);
+}
+
+.about__interest-icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}
+
+.about__interest-label {
+  display: block;
   font-size: 0.9375rem;
   font-weight: 500;
 }
 
-.about__interests li:nth-child(even) {
-  padding-left: 16px;
-  border-left: 1px solid var(--border);
-}
-
-.about__interests svg {
-  color: var(--accent);
+.about__interest-text {
+  display: block;
+  margin-top: 2px;
+  color: var(--text-dim);
+  font-size: 0.8125rem;
+  line-height: 1.45;
 }
 
 /* ---------- Education card ---------- */
 .edu {
   display: grid;
+  align-content: start;
   gap: 24px;
   padding: clamp(20px, 3vw, 28px);
 }
 
 .edu__head {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr);
   gap: 16px;
   align-items: start;
 }
@@ -99,31 +160,6 @@
   font-size: 0.9375rem;
 }
 
-.edu__score {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  line-height: 1;
-}
-
-.edu__score-value {
-  font-size: 2rem;
-  font-weight: 650;
-  letter-spacing: -0.03em;
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.edu__score-label {
-  margin-top: 6px;
-  font-family: var(--font-mono);
-  font-size: 0.71875rem;
-  letter-spacing: 0.08em;
-  color: var(--text-dim);
-}
-
 .edu__meta {
   display: flex;
   flex-wrap: wrap;
@@ -142,8 +178,11 @@
 }
 
 .edu__status {
-  margin-left: auto;
   color: var(--accent-text);
+}
+
+.edu__status strong {
+  font-weight: 600;
 }
 
 .edu__block {
@@ -204,6 +243,7 @@
 
 .journey__text {
   color: var(--text-muted);
+  text-wrap: pretty;
 }
 
 .journey__step.is-current .journey__text {
@@ -212,6 +252,7 @@
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
+  #about .section-head,
   .about {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -222,21 +263,12 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .about__interests li:nth-child(even) {
-    padding-left: 0;
-    border-left: 0;
-  }
-
   .edu__head {
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .edu__icon {
     display: none;
-  }
-
-  .edu__status {
-    margin-left: 0;
   }
 }
 

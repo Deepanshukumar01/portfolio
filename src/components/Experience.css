@@ -101,6 +101,82 @@
   text-underline-offset: 3px;
 }
 
+/* ---------- Certificate thumbnail ---------- */
+.exp-row--has-cert {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.exp-row__cert {
+  position: relative;
+  display: block;
+  width: 168px;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: var(--surface-2);
+  box-shadow: var(--shadow);
+  transition:
+    border-color 0.2s var(--ease),
+    transform 0.2s var(--ease);
+}
+
+.exp-row__cert img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1606 / 1135;
+  object-fit: cover;
+}
+
+.exp-row__cert-hint {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px;
+  background: var(--glass-strong);
+  color: var(--text);
+  font-size: 0.75rem;
+  font-weight: 500;
+  transform: translateY(100%);
+  transition: transform 0.2s var(--ease);
+}
+
+.exp-row__cert:hover,
+.exp-row__cert:focus-visible {
+  border-color: var(--accent-border);
+  transform: translateY(-2px);
+}
+
+.exp-row__cert:hover .exp-row__cert-hint,
+.exp-row__cert:focus-visible .exp-row__cert-hint {
+  transform: none;
+}
+
+/* ---------- Certificate viewer (dialog shell comes from .project-modal) ---------- */
+@media (min-width: 641px) {
+  .cert-modal {
+    width: min(960px, calc(100vw - 32px));
+  }
+}
+
+.cert-modal__title {
+  font-size: clamp(1.25rem, 1.1rem + 0.8vw, 1.625rem);
+}
+
+/* Sized to fit the viewport so the whole certificate is visible without scrolling. */
+.cert-modal__image {
+  width: auto;
+  height: auto;
+  max-width: calc(100% - 56px);
+  max-height: calc(100dvh - 280px);
+  margin: 24px auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
 /* Type label — text carries the meaning; color is a secondary cue. */
 .exp-type {
   padding: 2px 9px;
@@ -138,9 +214,35 @@
   background: rgba(245, 181, 68, 0.07);
 }
 
+/* No room for a third column: the thumbnail drops below the text. */
+@media (max-width: 640px) {
+  .exp-row--has-cert {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .exp-row__cert {
+    grid-column: 2;
+    width: min(100%, 240px);
+  }
+
+  .exp-row__cert-hint {
+    transform: none;
+  }
+
+  .cert-modal__image {
+    max-width: calc(100% - 36px);
+    margin-block: 18px;
+  }
+}
+
 @media (max-width: 480px) {
-  .exp-row {
+  .exp-row,
+  .exp-row--has-cert {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .exp-row__cert {
+    grid-column: 1;
   }
 
   .exp-row__icon {

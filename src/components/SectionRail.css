@@ -1,0 +1,130 @@
+.rail {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 6px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow);
+  transform: translateY(-50%);
+}
+
+/* ---------- Previous / next ---------- */
+.rail__step {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-muted);
+  transition:
+    color 0.2s var(--ease),
+    background-color 0.2s var(--ease);
+}
+
+.rail__step:hover:not(:disabled) {
+  color: var(--text);
+  background: var(--tint-3);
+}
+
+.rail__step:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* ---------- Section dots ---------- */
+.rail__dots {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding-block: 2px;
+}
+
+.rail__dot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 22px;
+}
+
+.rail__dot::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--fill);
+  transition:
+    height 0.3s var(--ease),
+    background-color 0.2s var(--ease);
+}
+
+.rail__dot:hover::before {
+  background: var(--text-dim);
+}
+
+.rail__dot.is-active::before {
+  height: 18px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+}
+
+/* Section name, revealed to the left of the dot on hover / keyboard focus. */
+.rail__label {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 14px);
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--glass-panel);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(6px, -50%);
+  transition:
+    opacity 0.2s var(--ease),
+    transform 0.2s var(--ease);
+}
+
+.rail__index {
+  margin-right: 6px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+}
+
+.rail__dot:hover .rail__label,
+.rail__dot:focus-visible .rail__label {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+/* ---------- Responsive ---------- */
+/* Without room beside the content, keep just the arrows in the bottom corner. */
+@media (max-width: 1239px) {
+  .rail {
+    top: auto;
+    right: 16px;
+    bottom: 20px;
+    transform: none;
+  }
+
+  .rail__dots {
+    display: none;
+  }
+}

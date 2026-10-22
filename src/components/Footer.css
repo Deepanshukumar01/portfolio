@@ -1,89 +1,66 @@
 .footer {
-  padding-bottom: 28px;
+  padding-bottom: 36px;
 }
 
+/* Centered stack: socials, links, back to top. */
 .footer__inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
-  align-items: center;
-  gap: 20px 40px;
-  padding-top: 36px;
-  border-top: 1px solid var(--border);
-}
-
-.footer__brand {
+  position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  min-width: 0;
+  gap: 24px;
+  padding-top: 48px;
+  text-align: center;
 }
 
-.footer__logo {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background:
-    linear-gradient(var(--surface-2), var(--surface-2)) padding-box,
-    var(--gradient) border-box;
-  border: 1.5px solid transparent;
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 600;
+.footer__inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--gutter);
+  right: var(--gutter);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-strong) 30%, var(--border-strong) 70%, transparent);
 }
 
-.footer__name {
-  font-weight: 600;
+.footer__socials {
+  display: flex;
+  gap: 10px;
 }
 
-.footer__tagline {
-  font-size: 0.8125rem;
-  color: var(--text-dim);
+.footer__socials .icon-btn:hover {
+  color: var(--accent-text);
+  background: var(--accent-soft);
+  border-color: var(--accent-border);
 }
 
 .footer__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 20px;
-  font-size: 0.875rem;
+  justify-content: center;
+  gap: 8px 28px;
+  font-size: 0.9375rem;
   color: var(--text-muted);
+}
+
+.footer__links a {
+  transition: color 0.2s var(--ease);
 }
 
 .footer__links a:hover {
   color: var(--text);
 }
 
-.footer__socials {
-  display: flex;
-  gap: 8px;
+.footer__top svg {
+  transition: transform 0.2s var(--ease);
 }
 
-.footer__bottom {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 28px;
-  font-size: 0.8125rem;
-  color: var(--text-dim);
+.footer__top:hover svg {
+  transform: translateY(-2px);
 }
 
-.footer__top {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--text-muted);
-}
-
-.footer__top:hover {
-  color: var(--text);
-}
-
-@media (max-width: 900px) {
-  .footer__inner {
-    grid-template-columns: minmax(0, 1fr);
+@media (max-width: 480px) {
+  .footer__links {
+    gap: 8px 20px;
   }
 }

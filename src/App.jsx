@@ -9,6 +9,7 @@ import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import Toaster from "./components/Toaster.jsx";
 import SectionRail from "./components/SectionRail.jsx";
+import SocialRail from "./components/SocialRail.jsx";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
       </a>
       <div className="backdrop" aria-hidden="true" />
       <Navbar />
+      <SocialRail />
       <SectionRail />
       <main id="main">
         <Hero />

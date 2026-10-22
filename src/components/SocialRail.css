@@ -1,0 +1,98 @@
+/* Container: fixed on the left, independent floating elements (no shared capsule) */
+.social-rail {
+  position: fixed;
+  top: 50%;
+  left: 24px;
+  z-index: 90;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.social-rail__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-rail__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Individual separate floating circular button */
+.social-rail__btn {
+  pointer-events: auto;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  color: var(--text-muted);
+  text-decoration: none;
+  transition:
+    color 0.25s var(--ease),
+    background-color 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+}
+
+.social-rail__btn:hover,
+.social-rail__btn:focus-visible {
+  color: var(--text);
+  background: var(--surface-hover);
+  border-color: var(--accent);
+  transform: translateX(4px) scale(1.08);
+  box-shadow:
+    0 6px 22px rgba(0, 0, 0, 0.45),
+    0 0 16px rgba(107, 149, 255, 0.3);
+}
+
+/* Tooltip on hover/focus */
+.social-rail__label {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 12px);
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--glass-panel);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-6px, -50%);
+  transition:
+    opacity 0.2s var(--ease),
+    transform 0.2s var(--ease);
+  z-index: 100;
+}
+
+.social-rail__btn:hover .social-rail__label,
+.social-rail__btn:focus-visible .social-rail__label {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+/* Responsive: hide on mobile screens */
+@media (max-width: 900px) {
+  .social-rail {
+    display: none;
+  }
+}

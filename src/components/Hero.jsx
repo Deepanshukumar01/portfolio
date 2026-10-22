@@ -1,6 +1,5 @@
 import { ArrowRight, MapPin } from "lucide-react";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
-import { profile, socialLinks } from "../data/profile.js";
+import { profile } from "../data/profile.js";
 import { projects } from "../data/projects.js";
 import { experiences } from "../data/experience.js";
 import ResumeButton from "./ResumeButton.jsx";
@@ -59,26 +58,6 @@ export default function Hero() {
                 <ArrowRight size={17} aria-hidden="true" />
               </a>
               <ResumeButton mode="download" />
-              <span className="hero__socials">
-                <a
-                  className="icon-btn icon-btn--lg"
-                  href={socialLinks.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub (opens in a new tab)"
-                >
-                  <FaGithub size={18} aria-hidden="true" />
-                </a>
-                <a
-                  className="icon-btn icon-btn--lg"
-                  href={socialLinks.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn (opens in a new tab)"
-                >
-                  <FaLinkedinIn size={18} aria-hidden="true" />
-                </a>
-              </span>
             </div>
           </div>
 

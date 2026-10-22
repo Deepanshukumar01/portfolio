@@ -28,7 +28,7 @@ export const profile = {
   // TODO: /profile.svg is a placeholder cartoon avatar — add your photo to /public
   // (e.g. /public/profile.jpg) and set "/profile.jpg".
   // While null, the hero shows the about.js code card instead.
-  photo: "/profile.svg",
+  photo: "/profile.jpg",
 
   githubUsername: "Deepanshukumar01",
 
